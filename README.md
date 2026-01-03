@@ -1,1 +1,103 @@
-# Basic-Hexapod
+# 🐕 8-DOF DIY Quadruped Robot
+
+A low-cost, 3D-printable quadruped robot powered by an **Arduino** and the **PCA9685 servo driver**.  
+This project features a custom **inverse kinematics engine** for 2-DOF legs, a stability-focused **Creep Gait**, and a suite of pre-programmed animations such as waving, pushups, and bowing.
+
+> 📸 *Replace this line with a photo or GIF of your robot*
+
+---
+
+## 📋 Table of Contents
+- [Features](#-features)
+- [Hardware Requirements](#️-hardware-requirements)
+- [Wiring Guide](#-wiring-guide)
+- [Software Setup](#-software-setup)
+- [Calibration](#️-calibration)
+
+---
+
+## 🌟 Features
+- **8 Degrees of Freedom**  
+  - 4 legs with **Hip** and **Knee** joints
+- **Object-Oriented Control**  
+  - Custom C++ classes for joint abstraction and mirroring
+- **Animations**
+  - 👋 **Wave** – Balances on 3 legs and waves
+  - 💤 **Sleep / Wake** – Smooth transitions between poses
+  - 💪 **Pushups** – Demonstrates torque coordination
+  - 🙇 **Bow & Sit** – Dog-like tricks
+- **Interactive Calibration**  
+  - Serial-based tuning of servo limits
+
+---
+
+## 🛠️ Hardware Requirements
+- **Microcontroller:** Arduino Uno R3 (or compatible)
+- **Servo Driver:** PCA9685 16-Channel 12-bit PWM Driver (I2C)
+- **Actuators:**  
+  - 8× SG90 Micro Servos  
+  - *(MG90S recommended for metal gears)*
+- **Power Supply:**  
+  - 5V **2A or higher** (USB wall adapter or power bank)
+
+⚠️ **Important:**  
+Do **NOT** power servos directly from the Arduino 5V pin.
+
+- **Chassis:**  
+  - Custom 3D-printed parts (see `/CAD` folder)
+
+---
+
+## 🔌 Wiring Guide
+
+This project uses the **Adafruit_PWMServoDriver** library.
+
+### PCA9685 → Arduino
+| PCA9685 | Arduino Uno |
+|-------|-------------|
+| VCC | 5V |
+| GND | GND |
+| SDA | A4 |
+| SCL | A5 |
+
+
+---
+
+### Servo Channel Mapping
+
+| Leg | Hip Channel | Knee Channel |
+|----|------------|--------------|
+| Front Left (FL) | 0 | 4 |
+| Front Right (FR) | 1 | 5 |
+| Back Left (BL) | 2 | 6 |
+| Back Right (BR) | 3 | 7 |
+
+
+---
+
+## 💾 Software Setup
+1. **Install Arduino IDE**  
+   - Download from: https://www.arduino.cc/en/software
+
+2. **Install Required Library**
+   - Open Arduino IDE  
+   - Go to **Tools → Manage Libraries**
+   - Search for **Adafruit PWM Servo Driver**
+   - Install the latest version
+
+3. **Upload the Code**
+   - Open a code from the `/Code` folder
+   - Connect Arduino via USB
+   - Select the correct **Board** and **Port**
+   - Click **Upload**
+
+---
+
+## ⚙️ Calibration
+
+Each servo behaves slightly differently. If the legs are not straight or symmetrical, adjust the pulse limits:
+
+```cpp
+// Located at the top of the .ino file
+#define SERVOMIN  110  // Minimum pulse length (≈ 0°)
+#define SERVOMAX  550  // Maximum pulse length (≈ 180°)
