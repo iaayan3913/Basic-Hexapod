@@ -86,7 +86,7 @@ This project uses the **Adafruit_PWMServoDriver** library.
    - Install the latest version
 
 3. **Upload the Code**
-   - Open a code from the `/Code` folder
+   - Open a code from the `/Codes` folder
    - Connect Arduino via USB
    - Select the correct **Board** and **Port**
    - Click **Upload**
