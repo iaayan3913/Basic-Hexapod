@@ -1,9 +1,9 @@
-# 🐕 8-DOF DIY Quadruped Robot
+# 8-DOF DIY Quadruped Robot
 
 A low-cost, 3D-printable quadruped robot powered by an **Arduino** and the **PCA9685 servo driver**.  
 This project features a custom **inverse kinematics engine** for 2-DOF legs, a stability-focused **Creep Gait**, and a suite of pre-programmed animations such as waving, pushups, and bowing.
 
-> 📸 *Replace this line with a photo or GIF of your robot*
+![Wave animation](Images_Videos/vid7.gif)
 
 ---
 
