@@ -1,7 +1,7 @@
 # 8-DOF DIY Quadruped Robot
 
 A low-cost, 3D-printable quadruped robot powered by an **Arduino** and the **PCA9685 servo driver**.  
-This project features a custom **inverse kinematics engine** for 2-DOF legs, a stability-focused **Creep Gait**, and a suite of pre-programmed animations such as waving, pushups, and bowing.
+This project features a suite of pre-programmed animations such as waving, pushups, and bowing.
 
 ![Wave animation](Images_Videos/vid7.gif)
 
@@ -44,7 +44,7 @@ This project features a custom **inverse kinematics engine** for 2-DOF legs, a s
 Do **NOT** power servos directly from the Arduino 5V pin.
 
 - **Chassis:**  
-  - Custom 3D-printed parts (see `/CAD` folder)
+  - Custom 3D-printed parts (see `/Final_Prints` folder)
 
 ---
 
@@ -92,6 +92,12 @@ This project uses the **Adafruit_PWMServoDriver** library.
    - Click **Upload**
 
 ---
+## Conclusion from this project 
+This project has allowed me to experiment with many different features of a spider robot. I have experimented with inverse kinmatics as well as controlling servos from PWM signals alone. However some of the setbacks of this model were the CAD model and the servos. The model does not fully secure the hip mount to the servo and causing it to fall off in high load situations. The lack of tolerance also creates alot of friction causing the servo to struggle further under load. These are also the SG90 servos which are notoriously weak. An improvement would be to use the metal geared servos or scale this up to account for larger stronger servos.
+
+The next stage would be to increase the degrees of freedom and make a more articulated spider robot.
+
+---
 
 ## ⚙️ Calibration
 
@@ -100,4 +106,6 @@ Each servo behaves slightly differently. If the legs are not straight or symmetr
 ```cpp
 // Located at the top of the .ino file
 #define SERVOMIN  110  // Minimum pulse length (≈ 0°)
+
+
 #define SERVOMAX  550  // Maximum pulse length (≈ 180°)
